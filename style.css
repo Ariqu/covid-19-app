@@ -1,0 +1,43 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+#countries {
+  background-color: #e0e0e0;
+  padding: 5px;
+  border-top: 5px solid #0095ff;
+}
+.color {
+  color: #ff3c00;
+  padding: 6px;
+  font-size: 20px;
+}
+#input_modal_pattern {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.covid {
+  background-color: #ff3c00;
+  margin-left: 400px;
+  margin-right: 400px;
+  font-weight: 900;
+  color: black;
+  border-left: 4px solid #bd2222;
+}
+#footer {
+  background-color: #171717;
+  color: white;
+  width: 100%;
+  height: 200px;
+}
+.foot_text {
+  opacity: 0.4;
+  text-align: center;
+}
+.link {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px;
+}

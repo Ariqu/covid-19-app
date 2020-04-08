@@ -41,3 +41,6 @@ body {
   margin-right: auto;
   font-size: 15px;
 }
+#world {
+  float: left;
+}

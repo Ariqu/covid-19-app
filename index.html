@@ -26,11 +26,13 @@
           <a class="btn btn-primary btn-lg" href="https://www.gov.pl/web/koronawirus" role="button">Learn more</a>
         </div>
 <div id="input_modal_pattern">
+    <div id="world"></div>
     <input type="text" id="input" name="" value="Poland">
     <input type="button" onclick="getData()" name="" value="Check">
     <div id="demo"></div>
     <div id="stats"></div>
     <div id="countries"></div>
+    
 </div>
   </div>
 
@@ -61,27 +63,23 @@
     }
 
     function World(jsonResponse) {
-          var wrld1 = '';
-          var country_input = document.getElementById("input").value;
+        var wrld = 'World';
       	//console.log(jsonResponse);
-      	for (i = 0; i<=jsonResponse.length; i++) {
-              wrld1 = wrld1+' '+jsonResponse[i]['country'] + ",";
-              var wrld = 'World';
-      		//console.log(jsonResponse[i]);
-      		//dane dla World[swiat]
-      		 if(jsonResponse[i]['country'] == wrld) {
-      		 	console.log(jsonResponse[i][wrld]);
+		for (var i = 0; i <= jsonResponse.length -1; i++) {
+            //dane dla World[swiat]
+      		if(jsonResponse[i]['country'] == wrld) {
       			//console.log(jsonResponse[i]['country']);
-      			document.getElementById("demo").innerHTML = '<b>Covid-19 statisctics for: '+jsonResponse[i]['country']+'</b><ul>\
+      			document.getElementById("world").innerHTML = '<b>Covid-19 statisctics for: '+jsonResponse[i]['country']+'</b><ul>\
       			<p class="covid">LiczbaZakarzeń: '+jsonResponse[i]['cases']+'</p>\
       			<p class="covid">Liczbna zakarzeń [dzis]: '+jsonResponse[i]['todayCases']+'</p>\
       			<p class="covid">Liczba ofiar: '+jsonResponse[i]['deaths']+'</p>\
       			<p class="covid">Liczba ofiar [dzis]: '+jsonResponse[i]['todayDeaths']+'</p>\
       			</ul>'
+      			break;
       		}
-      	}
-          document.getElementById("wrld").innerHTML = wrld1;
-      }
+
+        }
+    }
 
  	function getData() {
 	    var xhr = new XMLHttpRequest();
@@ -93,13 +91,14 @@
 	            var jsonResponse = JSON.parse(api);
 	            //console.log(jsonResponse);
 	            showData(jsonResponse);
+	            World(jsonResponse);
 	        }
 	    }
 	    xhr.open('GET', 'https://coronavirus-19-api.herokuapp.com/countries', true);
 	    xhr.send(null);
 	}
     getData();
-    World();
+    
     </script>
 
     <div id="footer">

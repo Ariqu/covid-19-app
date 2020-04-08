@@ -29,6 +29,7 @@
     <input type="text" id="input" name="" value="Poland">
     <input type="button" onclick="getData()" name="" value="Check">
     <div id="demo"></div>
+    <div id="stats"></div>
     <div id="countries"></div>
 </div>
   </div>
@@ -59,6 +60,29 @@
         document.getElementById("countries").innerHTML = countries;
     }
 
+    function World(jsonResponse) {
+          var wrld1 = '';
+          var country_input = document.getElementById("input").value;
+      	//console.log(jsonResponse);
+      	for (i = 0; i<=jsonResponse.length; i++) {
+              wrld1 = wrld1+' '+jsonResponse[i]['country'] + ",";
+              var wrld = 'World';
+      		//console.log(jsonResponse[i]);
+      		//dane dla World[swiat]
+      		 if(jsonResponse[i]['country'] == wrld) {
+      		 	console.log(jsonResponse[i][wrld]);
+      			//console.log(jsonResponse[i]['country']);
+      			document.getElementById("demo").innerHTML = '<b>Covid-19 statisctics for: '+jsonResponse[i]['country']+'</b><ul>\
+      			<p class="covid">LiczbaZakarzeń: '+jsonResponse[i]['cases']+'</p>\
+      			<p class="covid">Liczbna zakarzeń [dzis]: '+jsonResponse[i]['todayCases']+'</p>\
+      			<p class="covid">Liczba ofiar: '+jsonResponse[i]['deaths']+'</p>\
+      			<p class="covid">Liczba ofiar [dzis]: '+jsonResponse[i]['todayDeaths']+'</p>\
+      			</ul>'
+      		}
+      	}
+          document.getElementById("wrld").innerHTML = wrld1;
+      }
+
  	function getData() {
 	    var xhr = new XMLHttpRequest();
 	    xhr.onreadystatechange = function() {
@@ -75,6 +99,7 @@
 	    xhr.send(null);
 	}
     getData();
+    World();
     </script>
 
     <div id="footer">

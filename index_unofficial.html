@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="pl" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>CORONAVIRUS Covid-19 [app by: J. Galan]</title>
-  </head>
-<input type="text" id="input" name="" value="Poland">
-<input type="submit" onclick="showData()" name="" value="Check">
-  <div id="demo"></div>
+</head>
+<body>
+    <div id="countries"></div>
+    <input type="text" id="input" name="" value="Poland">
+    <input type="button" onclick="getData()" name="" value="Check">
+    <div id="demo"></div>
 
-  <body>
- <script type="text/javascript">
-
-var country_input = document.getElementById("input").value
-
+    <script type="text/javascript">
+	
 	function showData(jsonResponse) {
-
-    	console.log(jsonResponse);
+        var countries = '';
+        var country_input = document.getElementById("input").value;
+    	//console.log(jsonResponse);
     	for (var i = 0; i <= jsonResponse.length -1; i++) {
-    		console.log(jsonResponse[i]);
-
-
-
-
+            countries = countries+' '+jsonResponse[i]['country'];
+    		//console.log(jsonResponse[i]);
     		//dane dla polski
     		 if(jsonResponse[i]['country'] == country_input) {
+    		 	console.log(country_input);
+    		 	console.log(jsonResponse[i]);
     			//console.log(jsonResponse[i]['country']);
     			document.getElementById("demo").innerHTML = '<b>Covid-19 statisctics for: '+jsonResponse[i]['country']+'</b><ul>\
     			<li>LiczbaZakarzeń: '+jsonResponse[i]['cases']+'</li>\
@@ -32,14 +31,8 @@ var country_input = document.getElementById("input").value
     			<li>Liczba ofiar [dzis]: '+jsonResponse[i]['todayDeaths']+'</li>\
     			</ul>'
     		}
-
-
-
-
-
     	}
-
-
+        document.getElementById("countries").innerHTML = countries;
     }
 
  	function getData() {
@@ -51,27 +44,14 @@ var country_input = document.getElementById("input").value
 	            //Tu jest zmiana JSON.parse
 	            var jsonResponse = JSON.parse(api);
 	            //console.log(jsonResponse);
-
+	            showData(jsonResponse);
 	        }
 	    }
 	    xhr.open('GET', 'https://coronavirus-19-api.herokuapp.com/countries', true);
 	    xhr.send(null);
 	}
-	getData();
-    /*
-    function myFunction(xml) {
-        var xmlDoc = xml.responseXML;
-        var x = xmlDoc.getElementsByTagName('country')[0];
-        var y = x.childNodes[0];
-        document.getElementById("demo").innerHTML =
-        y.nodeValue;
+    getData();
+    </script>
 
-    }
-	myFunction()
-	*/
-</script>
-
-
-
-  </body>
+</body>
 </html>

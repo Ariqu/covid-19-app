@@ -8,103 +8,123 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <!--CSS --> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <!--CSS --> <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        <!--<script src="preloader.js"></script>-->
 </head>
 <body>
+	
+	<div id="text_main">COVID-19 APP<p class="mini">Scrool Down!</p> <p class="share"><a href="https://www.facebook.com/sharer/sharer.php?u=example.org" width="400px" height="240px" target="_blank">
+	<img class="icon" src="share_icon.png" alt=""></a></p>
+	</div>
+	<div id="top"></div>
 
-      <div class="container">
-
+    <div class="container">
         <div class="jumbotron">
-          <h1 class="display-4">Koronawirus (COVID-19)</h1>
-          <p class="lead">STOSUJ PIĘĆ ZASAD</p>
-          <hr class="my-4">
-          <p><div class="number"><b class="color">1</b> <b>RĘCE</b> Myj je często wodą z mydłem</div>
-          <div class="number"><b class="color">2</b> <b>ŁOKIEĆ</b> Zasłoń się nim, gdy kaszlesz</div>
-        <div class="number"><b class="color">3</b> <b>TWARZ</b> Nie dotykaj oczu, nosa i ust</div>
-      <div class="number"><b class="color">4</b> <b>ODLEGŁOŚĆ</b> Zachowaj 2 m odstępu</div>
-    <div class="number"><b class="color">5</b> <b>BEZPIECZEŃSTWO</b> Zostań w domu</div>
-  </p>
-          <a class="btn btn-primary btn-lg" href="https://www.gov.pl/web/koronawirus" role="button">Learn more</a>
+			<h1 class="display-4">Koronawirus (COVID-19)</h1>
+			<p class="lead">STOSUJ PIĘĆ ZASAD</p>
+			<hr class="my-4">
+          	<p>
+          		<div class="number"><b class="color">1</b> <b>RĘCE</b> Myj je często wodą z mydłem</div>
+          		<div class="number"><b class="color">2</b> <b>ŁOKIEĆ</b> Zasłoń się nim, gdy kaszlesz</div>
+        		<div class="number"><b class="color">3</b> <b>TWARZ</b> Nie dotykaj oczu, nosa i ust</div>
+      			<div class="number"><b class="color">4</b> <b>ODLEGŁOŚĆ</b> Zachowaj 2 m odstępu</div>
+    			<div class="number"><b class="color">5</b> <b>BEZPIECZEŃSTWO</b> Zostań w domu</div>
+  			</p>
+          	<a class="btn btn-primary btn-lg" href="https://www.gov.pl/web/koronawirus" role="button">Learn more</a>
         </div>
-<div id="input_modal_pattern">
-    <div id="world"></div>
-    <input type="text" id="input" name="" value="Poland">
-    <input type="button" onclick="getData()" name="" value="Check">
-    <div id="demo"></div>
-    <div id="stats"></div>
-    <div id="countries"></div>
-    
-</div>
-  </div>
+	    <div id="world"></div>
+
+		<div id="input_modal_pattern">
+			<select id="kraj" name="cars"></select>
+			<input type="button" onclick="getData()" name="" value="Check">
+		    <div id="demo"></div>
+		    <iframe src="https://www.google.com/maps/d/embed?mid=109q4o0A5dt7MY_3AShUrlu-ijWS4KMbp" width="100%" height="1024"></iframe>
+		</div>
+	</div>
 
     <script type="text/javascript">
+		function showData(jsonResponse) {
+	        var countries = '';
+	        var country_option = 'Poland';
+	        
+	        var sel = document.getElementById("kraj");
+	    	//console.log(sel.selectedIndex);
+	    	if(sel.selectedIndex != -1) {
+	    		country_option = sel.options[sel.selectedIndex].text;
+	    		console.log(country_option);
+	    	}
+	    	for (var i = 0; i <= jsonResponse.length -1; i++) {
+	            //countries = countries+' '+jsonResponse[i]['country'] + ",";
+	    		 if(jsonResponse[i]['country'] == country_option) {
+	    		 	//console.log(country_input);
+	    		 	//console.log(jsonResponse[i]);
+	    			//console.log(jsonResponse[i]['country']);
+	    			document.getElementById("demo").innerHTML = '<b>Covid-19 statisctics for: '+jsonResponse[i]['country']+'</b><ul>\
+	    			<p class="covid">LiczbaZakarzeń: '+jsonResponse[i]['cases']+'</p>\
+	    			<p class="covid">Liczbna zakarzeń [dzis]: '+jsonResponse[i]['todayCases']+'</p>\
+	    			<p class="covid">Liczba ofiar: '+jsonResponse[i]['deaths']+'</p>\
+	    			<p class="covid">Liczba ofiar [dzis]: '+jsonResponse[i]['todayDeaths']+'</p>\
+	    			</ul>'
+	    		}
+	    	}
+	    }
 
-	function showData(jsonResponse) {
-        var countries = '';
-        var country_input = document.getElementById("input").value;
-    	//console.log(jsonResponse);
-    	for (var i = 0; i <= jsonResponse.length -1; i++) {
-            countries = countries+' '+jsonResponse[i]['country'] + ",";
-
-    		//console.log(jsonResponse[i]);
-    		//dane dla polski
-    		 if(jsonResponse[i]['country'] == country_input) {
-    		 	console.log(country_input);
-    		 	console.log(jsonResponse[i]);
-    			//console.log(jsonResponse[i]['country']);
-    			document.getElementById("demo").innerHTML = '<b>Covid-19 statisctics for: '+jsonResponse[i]['country']+'</b><ul>\
-    			<p class="covid">LiczbaZakarzeń: '+jsonResponse[i]['cases']+'</p>\
-    			<p class="covid">Liczbna zakarzeń [dzis]: '+jsonResponse[i]['todayCases']+'</p>\
-    			<p class="covid">Liczba ofiar: '+jsonResponse[i]['deaths']+'</p>\
-    			<p class="covid">Liczba ofiar [dzis]: '+jsonResponse[i]['todayDeaths']+'</p>\
-    			</ul>'
-    		}
-    	}
-        document.getElementById("countries").innerHTML = countries;
-    }
-
-    function World(jsonResponse) {
-        var wrld = 'World';
-      	//console.log(jsonResponse);
-		for (var i = 0; i <= jsonResponse.length -1; i++) {
-            //dane dla World[swiat]
-      		if(jsonResponse[i]['country'] == wrld) {
-      			//console.log(jsonResponse[i]['country']);
-      			document.getElementById("world").innerHTML = '<b>Covid-19 statisctics for: '+jsonResponse[i]['country']+'</b><ul>\
-      			<p class="covid">LiczbaZakarzeń: '+jsonResponse[i]['cases']+'</p>\
-      			<p class="covid">Liczbna zakarzeń [dzis]: '+jsonResponse[i]['todayCases']+'</p>\
-      			<p class="covid">Liczba ofiar: '+jsonResponse[i]['deaths']+'</p>\
-      			<p class="covid">Liczba ofiar [dzis]: '+jsonResponse[i]['todayDeaths']+'</p>\
-      			</ul>'
-      			break;
-      		}
-
-        }
-    }
-
- 	function getData() {
-	    var xhr = new XMLHttpRequest();
-	    xhr.onreadystatechange = function() {
-	        if (xhr.readyState == XMLHttpRequest.DONE) {
-	            //console.log(xhr.responseText);
-	            var api = xhr.responseText;
-	            //Tu jest zmiana JSON.parse
-	            var jsonResponse = JSON.parse(api);
-	            //console.log(jsonResponse);
-	            showData(jsonResponse);
-	            World(jsonResponse);
+	    function World(jsonResponse) {
+	        var wrld = 'World';
+	      	//console.log(jsonResponse);
+			for (var i = 0; i <= jsonResponse.length -1; i++) {
+	            //dane dla World[swiat]
+	      		if(jsonResponse[i]['country'] == wrld) {
+	      			//console.log(jsonResponse[i]['country']);
+	      			document.getElementById("world").innerHTML = '<b>Covid-19 statisctics for: '+jsonResponse[i]['country']+'</b><ul>\
+	      			<p class="covid-world">LiczbaZakarzeń: '+jsonResponse[i]['cases']+'</p>\
+	      			<p class="covid-world">Liczbna zakarzeń [dzis]: '+jsonResponse[i]['todayCases']+'</p>\
+	      			<p class="covid-world">Liczba ofiar: '+jsonResponse[i]['deaths']+'</p>\
+	      			<p class="covid-world">Liczba ofiar [dzis]: '+jsonResponse[i]['todayDeaths']+'</p>\
+	      			</ul>'
+	      			break;
+	      		}
 	        }
 	    }
-	    xhr.open('GET', 'https://coronavirus-19-api.herokuapp.com/countries', true);
-	    xhr.send(null);
-	}
-    getData();
-    
+
+		function for_x(jsonResponse) {
+			var sel = document.getElementById("kraj");
+			var opt = document.createElement('option');
+			
+			jsonResponse.forEach(function(item, index, array) {
+				if (item.country != 'Total:' && item.country != '') {
+					//console.log(item.country);
+					sel.options[sel.options.length] = new Option(item.country, index);
+				}
+				//console.log(index,item);
+				//opt.appendChild(document.createTextNode(item.country));
+				//opt.value = index;
+				//sel.add(opt);
+			});
+		}
+
+	 	function getData() {
+		    var xhr = new XMLHttpRequest();
+		    xhr.onreadystatechange = function() {
+		        if (xhr.readyState == XMLHttpRequest.DONE) {
+		            //console.log(xhr.responseText);
+		            var api = xhr.responseText;
+		            //Tu jest zmiana JSON.parse
+		            var jsonResponse = JSON.parse(api);
+		            //console.log(jsonResponse);
+		            for_x(jsonResponse);
+		            showData(jsonResponse);
+		            World(jsonResponse);
+		        }
+		    }
+		    xhr.open('GET', 'https://coronavirus-19-api.herokuapp.com/countries', true);
+		    xhr.send(null);
+		}
+	    getData();
     </script>
-
     <div id="footer">
-      <p class="foot_text">All rights reserved © 2020 Jakub Gałan , Bartosz Ziarnek</p>
-      <div class="link"> <a href="https://github.com/Ariqu/covid-19-app/">GitHub/covid-19-app/</a></div>
-
+    	<p class="foot_text">All rights reserved © 2020 Jakub Gałan</p>
+    	<div class="link"> <a href="https://github.com/Ariqu/covid-19-app/">GitHub/covid-19-app/</a></div>
     </div>
 
 </body>

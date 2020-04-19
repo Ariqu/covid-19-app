@@ -12,52 +12,51 @@
         <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
         <!--<script src="preloader.js"></script>-->
+
+        <style type="text/css">
+			.navbar {
+				overflow: hidden;
+				position: fixed; /* Set the navbar to fixed position */
+				top: 0; /* Position the navbar at the top of the page */
+				width: 100%; /* Full width */
+			}
+		</style>
 </head>
 <body>
-
-
-
-
-
-
-
-
-
-
-
-  <div id="preloader">
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-  </div>
-
+	<!--
+	<div id="preloader" style="height: 100px">
+		<div class="dot"></div>
+		<div class="dot"></div>
+		<div class="dot"></div>
+	</div>
+  	
 	<div id="text_main">> COVID-19 APP<p class="mini">Scrool Down!</p> <p class="share"><a href="https://www.facebook.com/sharer/sharer.php?u=example.org" width="400px" height="240px" target="_blank">
 	<img class="icon" src="Images/share_icon.png" alt=""></a></p>
 	</div>
-	<div id="top"></div>
+	-->
+	<div id="top" style="height: 200px"></div>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">COVID-19-App</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+		  <ul class="navbar-nav">
+		    <li class="nav-item active">
+		      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="https://github.com/Ariqu/covid-19-app/">GitHub</a>
+		    </li>
 
+		    <button style="float: right;" type="button" class="btn " data-container="body" data-toggle="popover" data-placement="right" data-content="Infromacje o statystykach są bieżąco zmieniane!">
+		      Informacja
+		    </button>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">COVID-19-App</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/Ariqu/covid-19-app/">GitHub</a>
-        </li>
-
-        <button style="float: right;" type="button" class="btn " data-container="body" data-toggle="popover" data-placement="right" data-content="Infromacje o statystykach są bieżąco zmieniane!">
-          Informacja
-        </button>
-
-      </ul>
-    </div>
-  </nav>
+		  </ul>
+		</div>
+	</nav>
 
     <div class="container">
 <div id="black_line_menu_info">
@@ -71,11 +70,7 @@
 
 </div>
 	    <div id="world"></div>
-
-
-
-
-      <br /><br /><br /><br /><br />
+    	<br><br>
 
 
 
@@ -99,7 +94,7 @@
 		    <div id="demo"></div>
         <br /><br /><br />
         <div id="black_line_menu_info"><h1 style="font-size: 29px;">> Zasięg koronawirusa z Wuhan</h1></div>
-		    <iframe class="map" src="https://www.google.com/maps/d/embed?mid=109q4o0A5dt7MY_3AShUrlu-ijWS4KMbp" width="100%" height="1024"></iframe>
+		<iframe class="map" src="https://www.google.com/maps/d/embed?mid=109q4o0A5dt7MY_3AShUrlu-ijWS4KMbp" width="100%" height="1024"></iframe>
 </div>
 
     <div class="jumbotron">

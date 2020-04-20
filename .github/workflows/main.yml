@@ -12,8 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ftp auth
-        run: echo "$HOSTNAME $USER_NAME"
+        run: echo "Test"
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:
-          HOSTNAME: zspw.pl
-          USER_NAME: covid19
-          PASS: Q@wertyuiop
+          FTP_SERVER: zspw.pl
+          FTP_USERNAME: covid19
+          FTP_PASSWORD: Q@wertyuiop
+          LOCAL_DIR: build
+          ARGS: --delete

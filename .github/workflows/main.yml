@@ -17,6 +17,6 @@ jobs:
           FTP_SERVER: zspw.pl
           FTP_USERNAME: covid19
           FTP_PASSWORD: Q@wertyuiop
-          #LOCAL_DIR: covid-19-app
+          LOCAL_DIR: .
           REMOTE_DIR: public_html 
-          #ARGS: --delete
+          ARGS: --verbose

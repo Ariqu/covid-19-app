@@ -1,4 +1,4 @@
-name: Publish Website on zspw.pl
+name: Publish Website on ftp server zspw.pl
 # This workflow is triggered on pushes to the repository.
 on:
   push:
@@ -20,6 +20,5 @@ jobs:
           FTP_SERVER: zspw.pl
           FTP_USERNAME: covid19
           FTP_PASSWORD: Q@wertyuiop
-          #LOCAL_DIR: build
           REMOTE_DIR: public_html 
           ARGS: --verbose --delete --exclude=.git

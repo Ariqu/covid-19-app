@@ -11,6 +11,7 @@ jobs:
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: List files to publish
         run: ls -la
       - name: FTP-Deploy-Action
@@ -19,6 +20,6 @@ jobs:
           FTP_SERVER: zspw.pl
           FTP_USERNAME: covid19
           FTP_PASSWORD: Q@wertyuiop
-          LOCAL_DIR: build
+          #LOCAL_DIR: build
           REMOTE_DIR: public_html 
           ARGS: --verbose

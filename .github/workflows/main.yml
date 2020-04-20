@@ -12,8 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ftp auth
-        #uses: actions/hello-world-javascript-action@v1
-        #with:
-        #  who-to-greet: 'Mona the Octocat'
-        #id: hello
         run: echo 'Test ok'

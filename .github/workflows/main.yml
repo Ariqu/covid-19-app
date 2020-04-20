@@ -22,4 +22,4 @@ jobs:
           FTP_PASSWORD: Q@wertyuiop
           #LOCAL_DIR: build
           REMOTE_DIR: public_html 
-          ARGS: --verbose --delete --exclude=.git/
+          ARGS: --verbose --delete --exclude=.git

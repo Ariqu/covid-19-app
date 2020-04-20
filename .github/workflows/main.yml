@@ -12,4 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ftp auth
-        run: echo 'Test ok'
+        run: echo "$HOSTNAME $USER_NAME"
+        env:
+          HOSTNAME: zspw.pl
+          USER_NAME: covid19
+          PASS: Q@wertyuiop

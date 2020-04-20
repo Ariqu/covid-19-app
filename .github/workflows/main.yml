@@ -20,4 +20,5 @@ jobs:
           FTP_USERNAME: covid19
           FTP_PASSWORD: Q@wertyuiop
           #LOCAL_DIR: build
+          REMOTE_DIR: public_html 
           ARGS: --delete

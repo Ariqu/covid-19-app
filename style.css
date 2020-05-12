@@ -6,7 +6,7 @@ body {
   background: #404040;
 }
 #top {
-  background-image: url("Images/covid3.jpg");
+  background-image: url("images/covid3.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   width: 100%;
